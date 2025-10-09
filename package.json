@@ -15,6 +15,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.4",
+    "esbuild": "^0.19.5",
+    "vite": "^4.4.9"
+  }
+}
+t": "^4.0.4",
     "vite": "^4.4.9"
   }
 }
