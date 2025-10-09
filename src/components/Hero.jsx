@@ -1,4 +1,9 @@
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -12,18 +17,20 @@ const Content = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   color: white;
+  ${css`animation: ${fadeIn} 1s ease-out;`}
 `
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
   background: linear-gradient(45deg, #4a90e2, #63b3ed);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 `
 
 const Subtitle = styled.h2`
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   margin-bottom: 2rem;
   color: #9ca3af;
 `
@@ -33,6 +40,11 @@ const Description = styled.p`
   line-height: 1.6;
   margin-bottom: 2rem;
   max-width: 600px;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
 `
 
 const Button = styled.a`
@@ -50,6 +62,14 @@ const Button = styled.a`
   }
 `
 
+const RedButton = styled(Button)`
+  background: #dc3545;
+
+  &:hover {
+    background: #c82333;
+  }
+`
+
 const Hero = () => {
   return (
     <HeroSection>
@@ -60,7 +80,10 @@ const Hero = () => {
           I specialize in creating robust and scalable applications using React, Node.js, 
           and modern web technologies. Let's build something amazing together.
         </Description>
-        <Button href="#contact">Get in Touch</Button>
+        <ButtonContainer>
+          <Button href="#contact">Get in Touch</Button>
+          <RedButton href="#projects">View Projects</RedButton>
+        </ButtonContainer>
       </Content>
     </HeroSection>
   )
